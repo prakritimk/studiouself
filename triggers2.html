@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="icon" href="finalog.jpg" sizes="80x60" type="image/jpg">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Studious Elf | Triggers</title>
+    <link rel="stylesheet" href="t.css">
+    <link href="https://fonts.googleapis.com/css2?family=Fredericka+the+Great&display=swap" rel="stylesheet">
+
+</head>
+<body>
+    <div class="bgimage">
+<div class="menu">
+			<div id="rightmenu">
+				<ul>
+					<!-- <li><a href="#home"> HOME </a></li> -->
+          		    <li style="font-size:4vw;"><a href="index.html">Home</a></li>
+                    <li style="font-size:4vw;"><a href="signin.html">Sign In</a></li>
+                    <li style="font-size:4vw;"><a href="signup.html">Sign Up</a></li>
+                    <li style="font-size:4vw;"><a href="cursors2.html">Cursors</a></li>
+                    <li style="font-size:4vw;"><a href="about.html">About</a></li>
+				</ul>
+            </div>
+      </div>
+    </div>
+       <h1 style="font-family:Dancing Script;font-size:350%; text-align: center">TRIGGERS</h1>
+        
+        <div class=intro>
+            <h2>Introduction</h2>
+            <p style="text-align:justify">A database trigger is procedural code that is automatically executed in response to certain events on a particular table or view in a database. The trigger is mostly used for maintaining the integrity of the information on the database. For example, when a new record (representing a new worker) is added to the employees table, new records should also be created in the tables of the taxes, vacations and salaries. Triggers can also be used to log historical data, for example to keep track of employees' previous salaries.</p>
+    </div>
+    <div class="dbms">
+        <h3>Below follows a series of descriptions of how some popular DBMS support triggers.</h3>
+<p>
+    <br>
+Oracle:<br>
+    <br>
+In addition to triggers that fire (and execute PL/SQL code) when data is modified, Oracle 10g supports triggers that fire when schema-level objects (that is, tables) are modified and when user logon or logoff events occur.
+<br><br>
+Schema-level triggers:<br>
+1.After Creation<br>
+2.Before Alter<br>
+3.After Alter<br>
+5.Before Drop<br>
+6.After Drop<br>
+7.Before Insert<br>
+        </p>
+    </div>
+    <div class="extra">
+        <h4>The four main types of triggers are:</h4>
+<p>
+    <br>
+1.Row-level trigger:<br> This gets executed before or after any column value of a row changes.<br>
+2.Column-level trigger:<br> This gets executed before or after the specified column changes.<br>
+3.For each row type:<br> This trigger gets executed once for each row of the result set affected by an insert/update/delete.<br>
+4.For each statement type:<br> This trigger gets executed only once for the entire result set, but also fires each time the statement is executed.<br>
+    </p>
+</div>
+    <div class="postsql">
+    <h5>PostgreSQL:</h5>
+        <p>Introduced support for triggers in 1997. The following functionality in SQL:2003 was previously not implemented in PostgreSQL:<br>
+<br>
+SQL allows triggers to fire on updates to specific columns; As of version 9.0 of PostgreSQL this feature is also implemented in PostgreSQL.<br>
+The standard allows the execution of a number of SQL statements other than SELECT, INSERT, UPDATE, such as CREATE TABLE as the triggered action. This can be done through creating a stored procedure or function to call CREATE TABLE.<br>
+Synopsis:</p>
+    </div>
+    <div class="img1">
+    <img src="tsnip1.jpg" alt="" style="position: static; top:%;left:1.5%;right:1%;width:inherit;height:15%" >
+    </div>
+    <div class="firebird">
+    <h6>Firebird:</h6>
+        <p>Firebird supports multiple row-level, BEFORE or AFTER, INSERT, UPDATE, DELETE (or any combination of thereof) triggers per table, where they are always "in addition to" the default table changes, and the order of the triggers relative to each other can be specified where it would otherwise be ambiguous (POSITION clause.) Triggers may also exist on views, where they are always "instead of" triggers, replacing the default updatable view logic. (Before version 2.1, triggers on views deemed updatable would run in addition to the default logic.)<br>
+<br>
+Firebird does not raise mutating table exceptions (like Oracle), and triggers will by default both nest and recurse as required (SQL Server allows nesting but not recursion, by default.) Firebird's triggers use NEW and OLD context variables (not Inserted and Deleted tables,) and provide UPDATING, INSERTING, and DELETING flags to indicate the current usage of the trigger</p>
+    </div>
+    <div class="img2">
+    <img src="tsnip2.jpg" alt="" style="position: static; top:%;left:1.5%;right:1%;width:inherit;height:15%" >
+    </div>
+    <div class="firebird1">
+        <p>As of version 2.1, Firebird additionally supports the following database-level triggers:<br>
+<br>
+1.CONNECT (exceptions raised here prevent the connection from completing)<br>
+2.DISCONNECT<br>
+3.TRANSACTION START<br>
+4.TRANSACTION COMMIT (exceptions raised here prevent the transaction from committing, or preparing if a two-phase commit is involved)<br>
+5.TRANSACTION ROLLBACK<br>
+            <br>
+Database-level triggers can help enforce multi-table constraints, or emulate materialized views. If an exception is raised in a TRANSACTION COMMIT trigger, the changes made by the trigger so far are rolled back and the client application is notified, but the transaction remains active as if COMMIT had never been requested; the client application can continue to make changes and re-request COMMIT.<br>
+<br>
+Syntax for database triggers:</p>
+    </div>
+    <div class="img3">
+    <img src="tsnip3.jpg" alt="" style="position: static; top:%;left:1.5%;right:1%;width:inherit;height:15%" >
+    </div>
+    <div class="row">
+    <h7>Row and statement level triggers:</h7>
+        <p>To understand how trigger behavior works, you need to be aware of the two main types of triggers; these are Row and Statement level triggers. The distinction between the two is how many times the code within the trigger is executed, and at what time.<br>
+<br>
+Suppose you have a trigger that is made to be called on an UPDATE to a certain table. Row level triggers would execute once for each row that is affected by the UPDATE. It is important to keep in mind if no rows are affected by the UPDATE command, the trigger will not execute any code within the trigger. Statement level triggers will be called once regardless of how many rows are affected by the UPDATE. Here it is important to note that even if the UPDATE command didn't affect any rows, the code within the trigger will still be executed once.<br>
+<br>
+Using the BEFORE and AFTER options determine when the trigger is called. Suppose you have a trigger that is called on an INSERT to a certain table. If your trigger is using the BEFORE option, the code within the trigger will be executed before the INSERT into the table occurs. A common use of the BEFORE trigger is to verify the input values of the INSERT, or modify the values accordingly. Now let's say we have a trigger that uses AFTER instead. The code within the trigger is executed after the INSERT happens to the table. An example use of this trigger is creating an audit history of who has made inserts into the database, keeping track of the changes made. When using these options you need to keep a few things in mind. The BEFORE option does not allow you to modify tables, that is why input validation is a practical use. Using AFTER triggers allows you to modify tables such as inserting into an audit history table.<br>
+<br>
+When creating a trigger to determine if it is statement or row level simply include the FOR EACH ROW clause for a row level, or omit the clause for a statement level. Be cautious of using additional INSERT/UPDATE/DELETE commands within your trigger, because trigger recursion is possible, causing unwanted behavior. In the examples below each trigger is modifying a different table, by looking at what is being modified you can see some common applications of when different trigger types are used.<br>
+<br>
+Here is an Oracle syntax example of a row level trigger that is called AFTER an update FOR EACH ROW affected. This trigger is called on an update to a phone book database. When the trigger is called it adds an entry into a separate table named phone_book_audit. Also take note of triggers being able to take advantage of schema objects like sequences, in this example audit_id_sequence.nexVal is used to generate unique primary keys in the phone_book_audit table.</p>
+    </div>
+     <div class="img4">
+    <img src="tsnip4.jpg" alt="" style="position: static; top:%;left:1.5%;right:1%;width:inherit;height:15%" >
+    </div>
+    <div class="img5">
+    <img src="tsnip5.jpg" alt="" style="position: static; top:%;left:1.5%;right:1%;width:inherit;height:15%" >
+    </div>
+    <div class="img6">
+    <img src="tsnip6.jpg" alt="" style="position: static; top:%;left:1.5%;right:1%;width:inherit;height:15%" >
+    </div>
+   <div class="after">
+    <h8>After - statement-level trigger:</h8>
+       <p>
+An Oracle syntax statement trigger that is called after an UPDATE to the phone_book table. When the trigger gets called it makes an insert into phone_book_edit_history table<br></p>
+    </div>
+    <div class="img7">
+    <img src="tsnip7.jpg" alt="" style="position: static; top:%;left:1.5%;right:1%;width:inherit;height:15%" >
+    </div>
+    <div class="img8">
+    <img src="tsnip8.jpg" alt="" style="position: static; top:%;left:1.5%;right:1%;width:inherit;height:15%" >
+    </div>
+    <div class="info1">
+    <h9>Before each - row-level trigger:</h9>
+       <p>
+In this example we have a BEFORE EACH ROW trigger that modifies the INSERT using a WHEN conditional. If the last name is larger than 10 letters, using the SUBSTR function[9] we change the last_name column value to an abbreviation.<br></p>
+    </div>
+   
+    <div class="img9">
+    <img src="tsnip9.jpg" alt="" style="position: static; top:%;left:1.5%;right:1%;width:inherit;height:15%" >
+    </div>
+    <div class="img10">
+    <img src="tsnip10.jpg" alt="" style="position: static; top:%;left:1.5%;right:1%;width:inherit;height:15%" >
+    </div>
+    <div class="img11">
+    <img src="tsnip11.jpg" alt="" style="position: static; top:%;left:1.5%;right:1%;width:inherit;height:15%" >
+    </div>
+    <div class="new1">
+    <h10>Before - statement-level trigger:
+        </h10>
+    <p>Using a BEFORE statement trigger is particularly useful when enforcing database restrictions.[10] For this example I am going to enforce a restriction upon someone named "SOMEUSER" on the table phone_book.</p>
+    </div>
+    <div class="img12">
+    <img src="tsnip12.jpg" alt="" style="position: static; top:%;left:1.5%;right:1%;width:inherit;height:15%" >
+    </div>
+    <div class="img13">
+    <img src="tsnip13.jpg" alt="" style="position: static; top:%;left:1.5%;right:1%;width:inherit;height:15%" >
+    </div>
+    
+    </body>
+</html>

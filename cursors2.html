@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="icon" href="finalog.jpg" sizes="80x60" type="image/jpg">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Studious Elf | Cursors</title>
+    <link rel="stylesheet" href="c.css">
+    <link href="https://fonts.googleapis.com/css2?family=Fredericka+the+Great&display=swap" rel="stylesheet">
+
+</head>
+<body>
+    <div class="bgimage">
+<div class="menu">
+			<div id="rightmenu">
+				<ul>
+					<!-- <li><a href="#home"> HOME </a></li> -->
+          		    <li style="font-size:4vw;"><a href="index.html">Home</a></li>
+                    <li style="font-size:4vw;"><a href="signin.html">Sign In</a></li>
+                    <li style="font-size:4vw;"><a href="signup.html">Sign Up</a></li>
+                    <li style="font-size:4vw;"><a href="triggers2.html">Triggers</a></li>
+                    <li style="font-size:4vw;"><a href="about.html">About</a></li>
+				</ul>
+            </div>
+      </div>
+    </div>
+       <h1 style="font-family:Dancing Script;font-size:350%; text-align: center">CURSORS</h1>
+        
+        <div class=intro>
+            <h2>Introduction:</h2>
+            <p style="text-align:justify">
+In computer science, a database cursor is a control structure that enables traversal over the records in a database. Cursors facilitate subsequent processing in conjunction with the traversal, such as retrieval, addition and removal of database records. The database cursor characteristic of traversal makes cursors akin to the programming language concept of iterator.
+<br>
+Cursors are used by database programmers to process individual rows returned by database system queries. Cursors enable manipulation of whole result sets at once. In this scenario, a cursor enables the sequential processing of rows in a result set.
+<br>
+In SQL procedures, a cursor makes it possible to define a result set (a set of data rows) and perform complex logic on a row by row basis. By using the same mechanics, a SQL procedure can also define a result set and return it directly to the caller of the SQL procedure or to a client application.
+<br>
+A cursor can be viewed as a pointer to one row in a set of rows. The cursor can only reference one row at a time, but can move to other rows of the result set as needed.
+            </p>
+        </div>
+    <div class="uses">
+        <h3>Uses:</h3>
+        <p>
+To use cursors in SQL procedures, you need to do the following:<br>
+<br>
+1.Declare a cursor that defines a result set.<br>
+2.Open the cursor to establish the result set.<br>
+3.Fetch the data into local variables as needed from the cursor, one row at a time.<br>
+4.Close the cursor when done.<br>
+            <br>
+To work with cursors you must use the following SQL statements:<br>
+<br>
+This section introduces the ways the SQL:2003 standard defines how to use cursors in applications in embedded SQL. Not all application bindings for relational database systems adhere to that standard, and some (such as CLI or JDBC) use a different interface.<br>
+<br>
+A programmer makes a cursor known to the DBMS by using a DECLARE ... CURSOR statement and assigning the cursor a (compulsory) name:<br>
+        </p>
+    </div>
+    <div class="img1">
+    <img src="csnip1.jpg" alt="" style="position: static; top:%;left:1.5%;right:1%;width:inherit;height:15%" >
+     </div>
+    <div class="img2">
+        <img src="csnip2.jpg" alt="" style="position: static; top:%;left:1.5%;right:1%;width:inherit;height:15%" >
+</div>
+    <div class="img3">
+        <img src="csnip3.jpg" alt="" style="position: static; top:%;left:1.5%;right:1%;width:inherit;height:15%" >
+    </div>
+    <div class="img4">
+        <img src="csnip4.jpg" alt="" style="position: static; top:%;left:1.5%;right:1%;width:inherit;height:15%" >
+    </div>
+    <div class="sc">
+        <h6>Scrollable Cursors:</h6>
+        <p>Programmers may declare cursors as scrollable or not scrollable. The scrollability indicates the direction in which a cursor can move.<br>
+
+With a non-scrollable (or forward-only) cursor, you can FETCH each row at most once, and the cursor automatically moves to the next row. After you fetch the last row, if you fetch again, you will put the cursor after the last row and get the following code: SQLSTATE 02000 (SQLCODE +100).<br>
+
+A program may position a scrollable cursor anywhere in the result set using the FETCH SQL statement. The keyword SCROLL must be specified when declaring the cursor. The default is NO SCROLL, although different language bindings like JDBC may apply a different default.<br>
+            <br>
+            DECLARE cursor_name sensitivity SCROLL CURSOR FOR SELECT ... FROM ...
+            <br><br>
+        The target position for a scrollable cursor can be specified relatively (from the current cursor position) or absolutely (from the beginning of the result set).</p>
+    </div>
+    <div class="img5">
+    <img src="csnip5.jpg" alt="" style="position: static; top:%;left:1.5%;right:1%;width:inherit;height:15%" >
+     </div>
+    <p3>Scrollable cursors can potentially access the same row in the result set multiple times. Thus, data modifications (insert, update, delete operations) from other transactions could affect the result set. A cursor can be SENSITIVE or INSENSITIVE to such data modifications. A sensitive cursor picks up data modifications affecting the result set of the cursor, and an insensitive cursor does not. Additionally, a cursor may be INSENSITIVE, in which case the DBMS tries to apply sensitivity as much as possible.</p3>
+    <div class="withold">
+        <h4>"WITH HOLD":</h4>
+        <p>Cursors are usually closed automatically at the end of a transaction, i.e. when a COMMIT or ROLLBACK (or an implicit termination of the transaction) occurs. That behavior can be changed if the cursor is declared using the WITH HOLD clause (the default is WITHOUT HOLD). A holdable cursor is kept open over COMMIT and closed upon ROLLBACK. (Some DBMS deviate from this standard behavior and also keep holdable cursors open over ROLLBACK.)<br>
+<br>
+ DECLARE  cursor_name CURSOR  WITH HOLD  FOR SELECT .... FROM ....<br>
+            <br>
+When a COMMIT occurs, a holdable cursor is positioned before the next row. Thus, a positioned UPDATE or positioned DELETE statement will only succeed after a FETCH operation occurred first in the transaction.
+<br><br>
+Note that JDBC defines cursors as holdable per default. This is done because JDBC also activates auto-commit per default.</p>
+    </div>
+    <div class="positional">
+    <h5>
+        Positioned update/delete statements:</h5>
+        <p>Cursors can not only be used to fetch data from the DBMS into an application but also to identify a row in a table to be updated or deleted. The SQL:2003 standard defines positioned update and positioned delete SQL statements for that purpose. Such statements do not use a regular WHERE clause with predicates. Instead, a cursor identifies the row. The cursor must be opened and already positioned on a row by means of FETCH statement.<br>
+<br>
+            The cursor must operate on an updatable result set in order to successfully execute a positioned update or delete statement. Otherwise, the DBMS would not know how to apply the data changes to the underlying tables referred to in the cursor.
+        </p>
+        </div>
+    <div class="img6">
+        <img src="csnip6.jpg" alt="" style="position: static; top:%;left:1.5%;right:1%;width:inherit;height:15%" >
+
+    </div>
+    <div class="disadv">
+    <h7>Disadvantages of cursors:</h7>
+        <p>The following information may vary depending on the specific database system.<br>
+<br>
+Fetching a row from the cursor may result in a network round trip each time. This uses much more network bandwidth than would ordinarily be needed for the execution of a single SQL statement like DELETE. Repeated network round trips can severely reduce the speed of the operation using the cursor. Some DBMSs try to reduce this effect by using block fetch. Block fetch implies that multiple rows are sent together from the server to the client. The client stores a whole block of rows in a local buffer and retrieves the rows from there until that buffer is exhausted.<br>
+<br>
+Cursors allocate resources on the server, such as locks, packages, processes, and temporary storage. For example, Microsoft SQL Server implements cursors by creating a temporary table and populating it with the query's result set. If a cursor is not properly closed (deallocated), the resources will not be freed until the SQL session (connection) itself is closed. This wasting of resources on the server can lead to performance degradations and failures.</p>
+    </div>
+    <div class="example">
+    <h8>EXAMPLES:</h8>
+    <p>EMPLOYEE TABLE</p>
+    </div>
+    <div class="egpics">
+        <img src="eg1.jpg" alt="" style="position: static; top:%;left:1.5%;right:1%;width:inherit;height:15%" >
+
+    </div>
+    <div class="egpics2">
+    <img src="eg2.jpg" alt="" style="position: static; top:%;left:1.5%;right:1%;width:inherit;height:15%" >
+
+    </div>
+        </body>
+</html>
